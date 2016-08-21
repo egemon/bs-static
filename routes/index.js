@@ -10,25 +10,24 @@ router.get('/', function(req, res, next) {
 router.post('/data', function(req, res, next) {
 	imgHelper.handleImage(req.body.nick, req.body.base64)
 	.then(function () {
-		console.log('File saved');
-		if (!req.body.id) {
-			res.status(502).send('Сначала сохраните пользователя в базе!');
-			return;
-		}
-		var path = req.body.nick.replace(/\s+/g, '') + '.jpg';
-		console.log('ID exists');
-  	request({
-  		method: 'PATCH',
-  		uri: 'http://localhost:8080/data',
-			json: true,
-  		body: {
-  			table: 'players',
-  			items: {
-  				imglink: 'http://localhost:3000/img/players/' + path
-  			},
-  			ids: req.body.id
-  		}
-  	}).then(function () {
+    if (!req.body.id) {
+      res.status(502).send('Сначала сохраните пользователя в базе!');
+      return;
+    }
+    var path = req.body.nick.replace(/\s+/g, '') + '.jpg';
+    request({
+      method: 'PATCH',
+      uri: 'http://localhost:8080/data',
+      json: true,
+      body: {
+        table: 'players',
+        items: {
+          imglink: 'http://localhost:3000/img/players/' + path
+        },
+        ids: req.body.id
+      }
+    }).then(function () {
+	   console.log('File saved');
   		res.send('Succses');
   	}, function (err) {
   		res.status(503).send(err);

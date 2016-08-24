@@ -4,9 +4,9 @@ var router = express.Router();
 var request = require('request-promise');
 var imgHelper = require('../helpers/images');
 var connection = require('../helpers/connection');
-var mainBEuri = 'http://bakerstreet.herokuapp.com';
+var mainBEuri = 'https://bakerstreet.herokuapp.com';
 // var mainBEuri = 'http://localhost:8080';
-var staticBEuri = 'http://bs-static.herokuapp.com:8090';
+var staticBEuri = 'https://bs-static.herokuapp.com:8090';
 // var staticBEuri = 'http://localhost:8090';
 
 /* GET home page. */

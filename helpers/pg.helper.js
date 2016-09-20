@@ -10,6 +10,19 @@ function saveFile (base64, path, format) {
 		});
 	return saveRecord.execQuery();
 }
+
+function getFiles(format) {
+	console.log('getFile()', format);
+	var saveRecord = new connection(`select path, data from files where format = '${format}';`,
+		{
+			DB_NAME: 'da9cn9pm8e1er8',
+			DB_HOST: 'ec2-54-228-192-254.eu-west-1.compute.amazonaws.com:5432',
+			DB_USER: 'mkobsbvenoupie',
+			DB_PASSWORD: '1Oq_VVrbqMPxe5DprhpOyl01TH'
+		});
+	return saveRecord.execQuery();
+}
 module.exports = {
-	saveFile: saveFile
+	saveFile: saveFile,
+	getFiles: getFiles,
 };

@@ -6,10 +6,12 @@ var imgHelper = require('../helpers/images');
 var connection = require('../helpers/connection');
 var mainBEuri = 'https://bakerstreet.herokuapp.com';
 // var mainBEuri = 'http://localhost:8080';
-var staticBEuri = 'https://bs-static.herokuapp.com:8090';
+var staticBEuri = 'https://bs-static.herokuapp.com';
 // var staticBEuri = 'http://localhost:8090';
 
-/* GET home page. */
+imgHelper.restoreFilesFromDB('base64');
+// imgHelper.migrateFilesToDB();
+
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });

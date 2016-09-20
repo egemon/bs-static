@@ -1,6 +1,7 @@
 'use strict';
 var pg = require('pg');
 pg.defaults.ssl = true;
+
 module.exports = class Connection {
 	constructor(sql, options){
 		this.sql = sql;
@@ -25,7 +26,6 @@ module.exports = class Connection {
 
 	runStatement(){
 		return new Promise((resolve, reject) => {
-			console.log('SQL query: ', this.sqlQuery());
 			this.client.query(this.sqlQuery(), (err, result) => {
 				if(err) {
 					console.log('Unable to execute SQL: ', this.sqlQuery());
